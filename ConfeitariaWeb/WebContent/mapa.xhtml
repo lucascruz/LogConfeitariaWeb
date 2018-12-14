@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/template/main.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<h1>Paginas de Site</h1>
+			<h:commandLink value="Index" action="index?faces-redirect=true"
+				immediate="true" />
+			<br />
+			<h:commandLink value="Sobre" action="sobre?faces-redirect=true"
+				immediate="true" />
+			<br />
+			<br />
+
+			<h1>
+				Paginas de Cadastro
+			</h1>
+			<h:commandLink value=" Cadastro de Funcionarios"
+				action="cadastrofuncionario?faces-redirect=true" immediate="true" />
+			<br />
+			<br />
+			<br />
+
+			<h1>Paginas de Consulta</h1>
+			<h:commandLink value=" Consulta de Funcionarios"
+				action="consultafuncionario?faces-redirect=true" immediate="true" />
+			<br />
+
+			<br />
+			<br />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

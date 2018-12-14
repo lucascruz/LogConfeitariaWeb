@@ -1,0 +1,182 @@
+@CHARSET "ISO-8859-1";
+
+*, *:before, *:after {
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html, body, header, footer, main, form {
+	width: 100%;
+}
+
+#body {
+	padding: 0 4rem;
+	background: #ccc;
+}
+
+#header {
+	display: flex;
+	align-items: center;
+	background: #fff;
+	padding: 0 2em;
+}
+
+#img-logo {
+	width: 120px;
+	height: 120px;
+}
+
+#title-logo {
+	text-decoration: none !important;
+}
+
+#nav {
+	background: darkslategrey;
+}
+
+.nav-botao {
+	color: #fff;
+	padding: .5em;
+	margin: 0 1em;
+	display: inline-block;
+	text-decoration: none;
+}
+
+#content {
+	background: #fff;
+	padding: 2em;
+	min-height: 70vh;
+}
+
+#footer {
+	background: darkslategrey;
+	color: #fff;
+	padding: 1em 2em;
+}
+
+#formLogin {
+	text-align: center;
+	border: 1px solid darkslategrey;
+	border-radius: 4px;
+	padding: 2em;
+	width: 500px;
+	margin: auto !important;
+	background: #b4c3d8;
+}
+
+.botao {
+	background: darkslategrey;
+	border: 1px solid darkslategrey;
+	border-radius: 4px;
+	padding: .5em 2em;
+	color: #fff;
+	font-size: 1em;
+	margin: 5px 25px 5px 0;
+}
+
+#content form {
+	min-width: 250px;
+	margin: 2.5em 0;
+}
+
+#content label {
+	margin-right: .8em;
+	min-width: 120px;
+	display: inline-block;
+}
+
+#edite {
+	float: right;
+	text-align: right;
+	margin-right: 2em;
+}
+
+.input-small {
+	width: 150px;
+}
+
+.input-medium {
+	width: 450px;
+}
+
+input[type=text], textarea, input[type=password], select {
+	padding: .4em;
+	border: 1px solid #ccc !important;
+	font-size: 1em;
+	margin-right: 2.5em;
+	min-width: 200px;
+}
+
+input[type=radio] {
+	margin: 0 .5em
+}
+
+.input-radio {
+	display: inline-block;
+	vertical-align: text-bottom;
+}
+
+#content ul {
+	list-style-type: none;
+}
+
+#messages li {
+	margin: 1em;
+	font-size: 1.2em;
+	font-weight: 800;
+	color: #069b0a;
+}
+
+#content .formTabela {
+	border-collapse: collapse;
+	min-width: 500px;
+	margin: auto;
+	width: 100%;
+}
+
+.formTabela th, .formTabela td {
+	border: none;
+	text-align: left;
+	padding: 8px;
+}
+
+.formTabela tbody tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.formTabela thead {
+	background: darkslategrey;
+	color: white;
+}
+
+.chip{
+    border: 1px solid darkslategrey;
+    color: #fff;
+    background: darkslategrey;
+    border-radius: 12px;
+    padding: 3px 4px 3px 9px;
+    margin: 5px;
+    display: inline-block;
+}
+.chip a{
+margin-left: 10px;
+    color: red;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8em;
+    padding: .3em;
+}
+
+
+#content .tabela-aviso{
+	font-size: 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4em;
+    border: 1px solid darkslategrey;
+    color: #fff;
+    background: darkslategrey;
+}

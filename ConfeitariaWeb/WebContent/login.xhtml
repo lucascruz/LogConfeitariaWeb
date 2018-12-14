@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/template/main.xhtml">
+	<ui:define name="content">
+		<h:messages id="messages" globalOnly="true" />
+
+		<h:form id="formLogin" rendered="#{utilBean.valor == 0}">
+			<h2>LOGIN</h2>
+			<br />
+			<h:outputLabel value="CPF:" for="cpf" />
+			<h:inputText id="cpf" value="#{loginBean.funcionario.cpf}"
+				required="true" requiredMessage="CPF do Funcionario obrigatório"
+				validatorMessage="CPF da Funcionario deve ter 11 caracteres numéricos"
+				maxlength="11">
+				<f:validateLength minimum="11" />
+				<f:ajax event="blur" render="cpfMessage" />
+			</h:inputText>
+			<br />
+			<h:message for="cpf" id="cpfMessage" />
+			<br />
+			<br />
+
+			<h:outputLabel value="Senha:" for="senha" />
+			<h:inputSecret id="senha" value="#{loginBean.funcionario.senha}"
+				validatorMessage="Senha Invalida" maxlength="32">
+				<f:validateLength minimum="6" />
+				<f:ajax event="blur" render="senhaMessage" />
+			</h:inputSecret>
+			<br />
+			<h:message for="senha" id="senhaMessage" />
+			<br />
+			<br />
+			<br />
+
+
+			<h:commandButton value="EFETUAR LOGIN"
+				action="#{loginBean.efetuarLogin}" class="botao" />
+			<br />
+			<br />
+			<br />
+
+			<h:commandLink value="Cadastrar novo Usuario"
+				action="#{utilBean.proximo}" immediate="true" />
+		</h:form>
+
+
+
+		<h:form id="formNovo" rendered="#{utilBean.valor == 1}">
+			<h1>Cadastro de Novo Funcionário</h1>
+			<h2>Este funcionário será cadastrado com permissões de
+				Administrador</h2>
+
+			<br />
+			<br />
+			<h:outputLabel value="Nome do Funcionário:" for="nome" />
+			<h:inputText id="nome" value="#{funcionarioBean.funcionario.nome}"
+				required="true" requiredMessage="Nome do Funcionario obrigatório"
+				validatorMessage="Nome da Funcionario deve ter entre 2 e 80 caracteres"
+				maxlength="80">
+				<f:validateLength minimum="2" />
+				<f:ajax event="blur" render="nomeMessage" />
+			</h:inputText>
+			<h:message for="nome" id="nomeMessage" />
+
+			<br />
+			<br />
+			<h:outputLabel value="CPF:" for="cpf" />
+			<h:inputText id="cpf" value="#{funcionarioBean.funcionario.cpf}"
+				required="true" requiredMessage="CNPJ da Funcionario obrigatório"
+				validatorMessage="CPF da Funcionario deve ter 11 caracteres numéricos"
+				maxlength="11">
+				<f:validateLength minimum="11" />
+				<f:ajax event="blur" render="cpfMessage" />
+			</h:inputText>
+			<h:message for="cpf" id="cpfMessage" />
+
+			<br />
+			<br />
+			<h:outputLabel value="Sexo:" for="sexo" />
+			<h:selectOneRadio value="#{funcionarioBean.funcionario.sexo}"
+				id="sexo" required="true"
+				requiredMessage="Selecione uma opção de sexo" class="input-radio">
+				<f:selectItems value="#{funcionarioBean.tipoSexo}" var="sexo"
+					itemValue="#{sexo}" itemLabel="#{sexo.label}" />
+				<f:ajax event="blur" render="sexoMessage" />
+			</h:selectOneRadio>
+			<h:message for="sexo" id="sexoMessage" />
+
+			<br />
+			<br />
+			<h:outputLabel value="Data de Nascimento:" for="dataNascimento" />
+			<h:inputText id="dataNascimento"
+				value="#{funcionarioBean.funcionario.dataNascimento.time}"
+				required="true" requiredMessage="Data de Nascimento Obrigatória"
+				maxlength="10">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>
+			<h:message for="dataNascimento" id="dataNascimentoMessage" />
+
+			<br />
+			<br />
+			<h:outputLabel value="Endereço:" for="endereco" />
+			<h:inputText id="endereco"
+				value="#{funcionarioBean.funcionario.endereco}" required="true"
+				requiredMessage="Endereço obrigatório"
+				validatorMessage="Endereço Obrigatório" maxlength="80">
+				<f:validateLength minimum="2" />
+				<f:ajax event="blur" render="enderecoMessage" />
+			</h:inputText>
+			<h:message for="endereco" id="enderecoMessage" />
+
+			<br />
+			<br />
+			<h:outputLabel value="Telefone:" for="telefone" />
+			<h:inputText id="telefone"
+				value="#{funcionarioBean.funcionario.telefone}" required="true"
+				requiredMessage="Número de Telefone obrigatório"
+				validatorMessage="Telefone Invalido" maxlength="11">
+				<f:validateLength minimum="10" />
+				<f:ajax event="blur" render="telefoneMessage" />
+			</h:inputText>
+			<h:message for="telefone" id="telefoneMessage" />
+
+			<br />
+			<br />
+			<h:outputLabel value="Email:" for="email" />
+			<h:inputText id="email" value="#{funcionarioBean.funcionario.email}"
+				validatorMessage="Email Invalido" maxlength="80">
+				<f:validateRegex pattern=".+@.+" />
+				<f:validateLength minimum="5" />
+				<f:ajax event="blur" render="emailMessage" />
+			</h:inputText>
+			<h:message for="email" id="emailMessage" />
+
+			<br />
+			<br />
+			<h:outputLabel value="Senha:" for="senha" />
+			<h:inputSecret id="senha"
+				value="#{funcionarioBean.funcionario.senha}" required="true"
+				requiredMessage="Senha obrigatória"
+				validatorMessage="Senha Invalida" maxlength="32">
+				<f:validateLength minimum="6" />
+				<f:ajax event="blur" render="senhaMessage" />
+			</h:inputSecret>
+			<h:message for="senha" id="senhaMessage" />
+
+			<br />
+			<br />
+			<h:commandButton id="gravar" value="Gravar"
+				action="#{funcionarioBean.gravarAdm}" class="botao">
+			</h:commandButton>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

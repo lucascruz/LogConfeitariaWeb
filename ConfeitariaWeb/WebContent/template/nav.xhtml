@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:form>
+	<h:commandLink value="Inicio" action="index?faces-redirect=true"
+		styleClass="nav-botao" immediate="true" />
+
+	<h:commandLink value="Leia-me" action="sobre?faces-redirect=true"
+		styleClass="nav-botao" immediate="true" />
+
+	<h:commandLink value="Mapa" action="mapa?faces-redirect=true"
+		styleClass="nav-botao" immediate="true" />
+
+	<h:commandLink value="Logout" action="#{loginBean.logout}"
+		styleClass="nav-botao" style="float: right;" />
+</h:form>
+</html>
