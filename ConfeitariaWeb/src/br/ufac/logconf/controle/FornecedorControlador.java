@@ -6,7 +6,7 @@ import javax.faces.bean.*;
 import br.ufac.logconf.entidades.*;
 import br.ufac.logconf.repositorios.*;
 
-
+// mudei 
 @ManagedBean(name="fornecedorControlador")
 @SessionScoped
 public class FornecedorControlador {
