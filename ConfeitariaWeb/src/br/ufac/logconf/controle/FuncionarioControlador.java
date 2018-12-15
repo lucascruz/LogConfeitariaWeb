@@ -6,7 +6,7 @@ import javax.faces.bean.*;
 import br.ufac.logconf.entidades.Funcionario;
 import br.ufac.logconf.repositorios.FuncionarioRepositorio;
 
-// não sei
+
 @ManagedBean(name="funcionarioControlador")
 @SessionScoped
 public class FuncionarioControlador {
@@ -20,8 +20,6 @@ public class FuncionarioControlador {
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
-
-	
 
 	public FuncionarioControlador() {
 		fr = new FuncionarioRepositorio();

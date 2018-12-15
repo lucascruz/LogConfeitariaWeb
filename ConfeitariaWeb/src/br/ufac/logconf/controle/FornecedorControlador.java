@@ -6,24 +6,37 @@ import javax.faces.bean.*;
 import br.ufac.logconf.entidades.*;
 import br.ufac.logconf.repositorios.*;
 
-// mudei 
+
 @ManagedBean(name="fornecedorControlador")
 @SessionScoped
 public class FornecedorControlador {
 
 	private List<Fornecedor> fornecedores;
 	private FornecedorRepositorio fo;
-	private CategoriaRepositorio cr;
+	private PedidoRepositorio pr;
 	private Fornecedor fornecedor;
+	private int pedidoCodigo;
 	private String chaveNome="";
 	
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
+	
+	public int getPedidoCodigo() {
+		return pedidoCodigo;
+	}
+
+
+
+	public void setPedidoCodigo(int pedidoCodigo) {
+		this.pedidoCodigo = pedidoCodigo;
+	}
+
+
 
 	public FornecedorControlador() {
 		fo = new FornecedorRepositorio();
-		cr = new CategoriaRepositorio();
+		pr = new PedidoRepositorio();
 		
 	}
 
@@ -47,27 +60,31 @@ public class FornecedorControlador {
 	}
 	
 	public String adicionar() {
+	fornecedor.setPedidos(pr.recuperar(pedidoCodigo));
 	fo.adicionar(fornecedor);
 		return "funcionarioListagem";
 	}
 	
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
+		pedidoCodigo = fornecedor.getPedidos().getId();
 		return "funcionarioEdicao";
 	}
 	
 	public String atualizar() {
+		fornecedor.setPedidos(pr.recuperar(pedidoCodigo));
 		fo.atualizar(fornecedor);
 		return "funcionarioListagem";
 	}
 	
 	public String excluir(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		return "funcionarioExclusao";
+		pedidoCodigo = fornecedor.getPedidos().getId();
+		return "fornecedorExclusao";
 	}
 	
 	public String remover() {
 		fo.remover(fornecedor);
-		return "funcionarioListagem";
+		return "fornecedorListagem";
 	}
 }
