@@ -13,30 +13,17 @@ public class FornecedorControlador {
 
 	private List<Fornecedor> fornecedores;
 	private FornecedorRepositorio fo;
-	private PedidoRepositorio pr;
+	private CategoriaRepositorio cr;
 	private Fornecedor fornecedor;
-	private int pedidoCodigo;
 	private String chaveNome="";
 	
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
-	
-	public int getPedidoCodigo() {
-		return pedidoCodigo;
-	}
-
-
-
-	public void setPedidoCodigo(int pedidoCodigo) {
-		this.pedidoCodigo = pedidoCodigo;
-	}
-
-
 
 	public FornecedorControlador() {
 		fo = new FornecedorRepositorio();
-		pr = new PedidoRepositorio();
+		cr = new CategoriaRepositorio();
 		
 	}
 
@@ -60,26 +47,22 @@ public class FornecedorControlador {
 	}
 	
 	public String adicionar() {
-	fornecedor.setPedidos(pr.recuperar(pedidoCodigo));
 	fo.adicionar(fornecedor);
 		return "funcionarioListagem";
 	}
 	
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		pedidoCodigo = fornecedor.getPedidos().getId();
 		return "funcionarioEdicao";
 	}
 	
 	public String atualizar() {
-		fornecedor.setPedidos(pr.recuperar(pedidoCodigo));
 		fo.atualizar(fornecedor);
 		return "funcionarioListagem";
 	}
 	
 	public String excluir(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		pedidoCodigo = fornecedor.getPedidos().getId();
 		return "fornecedorExclusao";
 	}
 	
