@@ -3,86 +3,27 @@ package br.ufac.logconf.controle;
 import java.util.*;
 import javax.faces.bean.*;
 
-import br.ufac.logconf.entidades.Funcionario;
-import br.ufac.logconf.repositorios.FuncionarioRepositorio;
-import br.ufac.logconf.repositorios.PedidoRepositorio;
+import br.ufac.logconf.entidades.*;
+import br.ufac.logconf.repositorios.*;
 
-@ManagedBean(name="funcionarioControlador")
+
+@ManagedBean(name="categoriaControlador")
 @SessionScoped
 public class CategoriaControlador {
 
-	private List<Funcionario> funcionarios;
-	private FuncionarioRepositorio fr;
-	private PedidoRepositorio pr;
-	private Funcionario funcionario;
-	private int funcionarioCodigo;
+	private List<Categoria> categorias;
+	private CategoriaRepositorio cr;
+	private Categoria categoria;
 	private String chaveNome="";
-	private String cpf;
-	private String endereco;
-	private int idade;
-	private String nome;
-	private String sexo;
 	
-	public Funcionario getFuncionario() {
-		return funcionario;
-	}
-
-	public int getFuncionarioId() {
-		return funcionarioCodigo;
-	}
-
-	public void setFuncionarioCodigo(int funcCodigo) {
-		this.funcionarioCodigo = funcCodigo;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
 	public CategoriaControlador() {
-		fr = new FuncionarioRepositorio();
-		pr = new PedidoRepositorio();
-	}
-
-	public List<Funcionario> getFuncionarios() {
-	//	funcionarios = fr.recuperarTodosPorID(chaveNome);
-		return funcionarios;
-	}
-	
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public int getIdade() {
-		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+		cr = new CategoriaRepositorio();
+	//	mr = new MaterialRepositorio();
+		
 	}
 
 	public String getChaveNome() {
@@ -94,40 +35,44 @@ public class CategoriaControlador {
 	}
 
 	public String incluir() {
-		funcionario = new Funcionario();
-		return "funcionarioInclusao";
+		categoria = new Categoria();
+		return "categoriaInclusao";
 	}
 	
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
 	public String adicionar() {
-		funcionario.setCpf(cpf);
-		funcionario.setEndereco(endereco);
-		funcionario.setIdade(idade);
-		funcionario.setNome(nome);
-		funcionario.setSexo(sexo);
-		fr.adicionar(funcionario);
+	cr.adicionar(categoria);
 		return "funcionarioListagem";
 	}
 	
-	public String editar(Funcionario funcionario) {
-		this.funcionario = funcionario;
-		//cursoCodigo = aluno.getCurso().getCodigo();
-		return "funcionarioEdicao";
+	public String editar(Categoria categoria) {
+		this.categoria = categoria;
+		return "categoriaEdicao";
 	}
 	
 	public String atualizar() {
-		//funcionario.setCurso(cr.recuperar(cursoCodigo));
-		fr.atualizar(funcionario);
-		return "funcionarioListagem";
+		cr.atualizar(categoria);
+		return "categoriaListagem";
 	}
 	
-	public String excluir(Funcionario aluno) {
-		this.funcionario = funcionario;
-		//cursoCodigo = aluno.getCurso().getCodigo();
-		return "funcionarioExclusao";
+	public String excluir(Categoria categoria) {
+		this.categoria = categoria;
+		return "categoriaExclusao";
 	}
 	
 	public String remover() {
-		fr.remover(funcionario);
-		return "funcionarioListagem";
+		cr.remover(categoria);
+		return "categoriaListagem";
 	}
+	
+	
+	
 }
